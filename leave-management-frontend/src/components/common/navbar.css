@@ -1,0 +1,256 @@
+/* ============================================================
+   NAVBAR — Pure CSS
+   Consistent with auth.css & dashboard tokens
+   ============================================================ */
+
+:root {
+    --brand-100: #dbeafe;
+    --brand-600: #2563eb;
+    --brand-700: #1d4ed8;
+
+    --purple-100: #ede9fe;
+    --purple-700: #6d28d9;
+
+    --surface-50: #f8fafc;
+    --surface-100: #f1f5f9;
+    --surface-400: #94a3b8;
+    --surface-500: #64748b;
+    --surface-800: #1e293b;
+    --surface-900: #0f172a;
+    --surface-950: #020617;
+
+    --red-50: #fef2f2;
+    --red-600: #dc2626;
+
+    --shadow-card-hover: 0 4px 24px rgba(0, 0, 0, 0.10), 0 1px 4px rgba(0, 0, 0, 0.06);
+    --radius-xl: 0.75rem;
+    --radius-lg: 0.5rem;
+    --font-display: 'Georgia', serif;
+    --font-body: system-ui, -apple-system, sans-serif;
+}
+
+/* ---------- Header Shell ---------- */
+.navbar {
+    height: 4rem;
+    background: #fff;
+    border-bottom: 1px solid var(--surface-100);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    font-family: var(--font-body);
+}
+
+/* ---------- Left: Logo ---------- */
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.navbar-logo-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar-logo-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--radius-lg);
+    background: var(--brand-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.navbar-logo-icon span {
+    color: #fff;
+    font-size: 0.75rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+}
+
+.navbar-logo-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--surface-950);
+}
+
+@media (max-width: 639px) {
+    .navbar-logo-name {
+        display: none;
+    }
+}
+
+/* ---------- Right: Actions ---------- */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* ---------- Role Badge ---------- */
+.role-badge {
+    display: none;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+@media (min-width: 640px) {
+    .role-badge {
+        display: inline-flex;
+    }
+}
+
+.role-badge--employee {
+    background: var(--brand-100);
+    color: var(--brand-700);
+}
+
+.role-badge--employer {
+    background: var(--purple-100);
+    color: var(--purple-700);
+}
+
+/* ---------- Dropdown Trigger ---------- */
+.navbar-user-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.375rem 0.75rem 0.375rem 0.25rem;
+    border-radius: var(--radius-xl);
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s;
+    font-family: var(--font-body);
+}
+
+.navbar-user-btn:hover {
+    background: var(--surface-50);
+}
+
+/* Avatar circle */
+.navbar-avatar {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--brand-600);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.navbar-user-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--surface-800);
+    max-width: 7.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.navbar-chevron {
+    color: var(--surface-400);
+}
+
+@media (max-width: 639px) {
+
+    .navbar-user-name,
+    .navbar-chevron {
+        display: none;
+    }
+}
+
+/* ---------- Dropdown Menu ---------- */
+.navbar-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    width: 13rem;
+    background: #fff;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card-hover);
+    border: 1px solid var(--surface-100);
+    padding: 0.375rem 0;
+    z-index: 50;
+    animation: slideUp 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Dropdown user info */
+.navbar-dropdown-info {
+    padding: 0.625rem 1rem;
+    border-bottom: 1px solid var(--surface-100);
+}
+
+.navbar-dropdown-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--surface-900);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.navbar-dropdown-email {
+    font-size: 0.75rem;
+    color: var(--surface-500);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-top: 0.125rem;
+}
+
+/* Logout button */
+.navbar-logout-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.625rem 1rem;
+    background: none;
+    border: none;
+    font-size: 0.875rem;
+    color: var(--red-600);
+    cursor: pointer;
+    transition: background 0.15s;
+    font-family: var(--font-body);
+    text-align: left;
+}
+
+.navbar-logout-btn:hover {
+    background: var(--red-50);
+}
+
+/* ---------- Backdrop (close on outside click) ---------- */
+.navbar-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+}
+
+/* ---------- Shared slideUp ---------- */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
